@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
 
 public class AlgorithmsTest {
 
-
     @Test
     public void max2Test() {
         assertEquals(1, Algorithms.max2(List.of( 1 )).intValue());
