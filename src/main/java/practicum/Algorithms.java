@@ -28,7 +28,7 @@ public class Algorithms {
      * Вычислите максимальное, минимальное и среднее число для списка чисел
      * Верните их сумму
      */
-    public static double maxMinAvr (List<Double> numbers) {
+     public static double maxMinAvr (List<Integer> numbers) {
         return -1;
     }
 

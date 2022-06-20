@@ -8,6 +8,23 @@ import static org.junit.Assert.*;
 public class AlgorithmsTest {
 
     @Test
+    public void maxMinAvrTest() {
+        assertEquals(3, Algorithms.maxMinAvr(List.of(1 )), 0.0);
+        assertEquals(3, Algorithms.maxMinAvr(List.of(1, 1, 1 )), 0.0);
+        assertEquals(-3, Algorithms.maxMinAvr(List.of(-1 )), 0.0);
+        assertEquals(-3, Algorithms.maxMinAvr(List.of(-1,-1,-1 )), 0.0);
+        assertEquals(0, Algorithms.maxMinAvr(List.of(0)), 0.01);
+        assertEquals(3, Algorithms.maxMinAvr(List.of(1, 1)), 0.0);
+        assertEquals(0, Algorithms.maxMinAvr(List.of(1, -1)), 0.0);
+        assertEquals(4.33, Algorithms.maxMinAvr(List.of( 1, 1, 2 )), 0.01);
+        assertEquals(1.66, Algorithms.maxMinAvr(List.of( 1, -1, 2 )), 0.01);
+        assertEquals(4.66, Algorithms.maxMinAvr(List.of( 1, 2, 2 )), 0.01);
+        assertEquals(0.33, Algorithms.maxMinAvr(List.of( 1, -2, 2 )), 0.01);
+        assertEquals(6, Algorithms.maxMinAvr(List.of( 2, 2, 2 )), 0.0);
+        assertEquals(0, Algorithms.maxMinAvr(List.of( -2, 2, -2, 2 )), 0.0);
+        assertEquals(13.22, Algorithms.maxMinAvr(List.of( 1, 2, 5, 5, 6, 7, 7, 7, 7 )), 0.01);
+    }
+    @Test
     public void max2Test() {
         assertEquals(1, Algorithms.max2(List.of( 1 )).intValue());
         assertEquals(1, Algorithms.max2(List.of( 1, 2 )).intValue());
