@@ -141,10 +141,10 @@ public class AlgorithmsTest {
 
     @Test
     public void sortSymbolsTest() {
-        assertEquals(new char[]{'a', 'b', 'c', 'd'}, Algorithms.sortSymbols(new char[]{'c', 'a', 'b', 'd'}));
-        assertEquals(new char[]{'a'}, Algorithms.sortSymbols(new char[]{'a'}));
-        assertEquals(new char[]{'a', 'a','a', 'a'}, Algorithms.sortSymbols(new char[]{'a', 'a','a', 'a'}));
-        assertEquals(new char[]{'a', 'b', 'c', 'd', 'а', 'б', 'в', 'г', 'у'}, Algorithms.sortSymbols(new char[]{'г','а','в','у','б','c', 'a', 'b', 'd'}));
+        assertArrayEquals(new char[]{'a', 'b', 'c', 'd'}, Algorithms.sortSymbols(new char[]{'c', 'a', 'b', 'd'}));
+        assertArrayEquals(new char[]{'a'}, Algorithms.sortSymbols(new char[]{'a'}));
+        assertArrayEquals(new char[]{'a', 'a','a', 'a'}, Algorithms.sortSymbols(new char[]{'a', 'a','a', 'a'}));
+        assertArrayEquals(new char[]{'a', 'b', 'c', 'd', 'а', 'б', 'в', 'г', 'у'}, Algorithms.sortSymbols(new char[]{'г','а','в','у','б','c', 'a', 'b', 'd'}));
     }
 
 
