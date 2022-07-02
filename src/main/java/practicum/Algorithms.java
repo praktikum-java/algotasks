@@ -1,9 +1,6 @@
 package practicum;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Algorithms {
 
@@ -15,7 +12,7 @@ public class Algorithms {
      *
      * Не использовать при решении регулярные выражения, методы стандартных библиотек
      * java.util.Collections, java.util.Arrays, java.lang.Math, а также методы
-     * replace и replaceAll, reverce, equals, indexOf, toLowerCase, toUpperCase
+     * replace и replaceAll, reverse, equals, indexOf, toLowerCase, toUpperCase
      * split, substring из java.lang.String.
      * Можете использовать циклы, условные операторы,
      * простые типы данных и их обертки.
@@ -30,7 +27,21 @@ public class Algorithms {
      * Список гарантированно содежит элементы
      */
      public static double maxMinAvr (List<Integer> numbers) {
-        return -1;
+         int max = numbers.get(0);
+         int min = numbers.get(0);
+         double middle = 0;
+        for (int i : numbers) {
+            System.out.println(i);
+            middle += i;
+            if (i >= max) {
+                max = i;
+            }
+            if (i <= min){
+                min = i;
+            }
+        }
+         middle /= numbers.size();
+        return max + min + middle;
     }
 
 
@@ -40,8 +51,24 @@ public class Algorithms {
      * Массив гарантировано содержит элементы
      */
     public static Integer max2 (List<Integer> list) {
-
-        return -1;
+        int max = 0;
+        int max2 = 0;
+        for (int i : list ) {
+            if (i > max) {
+                max = i;
+            }
+        }
+        if (list.contains(max) && list.size() > 1) {
+            for (int i : list) {
+                if (i > max2 && i < max) {
+                    max2 = i;
+                }
+            }
+        }
+        if (max2 != 0) {
+            max = max2;
+        }
+        return max;
     }
 
     /**
@@ -52,8 +79,19 @@ public class Algorithms {
      * то возвращаться должен массив содержащий два элемента [6, 5]
      */
     public static int[] removeElementFromArray(int[] numbers, int value) {
-
-        return new int[]{};
+        ArrayList<Integer> newNumbers = new ArrayList<>();
+        for (int i : numbers) {
+            if (i != value) {
+                newNumbers.add(i);
+            }
+        }
+        int[] toReturn = new int[newNumbers.size()];
+        int count = 0;
+        for (int i : newNumbers) {
+            toReturn[count] = i;
+            count++;
+        }
+        return toReturn;
     }
 
 
@@ -62,10 +100,44 @@ public class Algorithms {
      * Например, "мАма Мыла раму" -> "мм Мл рм"
      */
     public static String removeVowels(String str) {
-
-        return new String();
+        String[] glasnie = {"у", "е", "ы", "а", "о", "э", "я", "и", "ю", "ё", "У", "Е", "Ы", "А", "О", "Э", "Я", "И",
+                "Ю", "Ё", "e", "y", "u", "i", "o", "a", "E", "Y", "U", "I", "O", "A"};
+        for (String g : glasnie) {
+            str = fastReplaceForVowels(str, g, " ".trim());
+        }
+        return str;
     }
 
+    static String fastReplaceForVowels(String str, String target, String replacement ) {
+        int targetLength = target.length();
+        if( targetLength == 0 ) {
+            return str;
+        }
+        StringBuilder sb = new StringBuilder(str);
+        int idx2 = sb.indexOf( target );
+        if( idx2 < 0 ) {
+            return str;
+        }
+        StringBuilder buffer = new StringBuilder( targetLength > replacement.length() ? str.length() : str.length() * 2 );
+        int idx1 = 0;
+        do {
+            buffer.append( str, idx1, idx2 );
+            buffer.append( replacement );
+            idx1 = idx2 + targetLength;
+            idx2 = str.indexOf( target, idx1 );
+        } while( idx2 > 0 );
+        buffer.append( str, idx1, str.length() );
+        return buffer.toString();
+    }
+    public static String toLowerCase(String str) {
+        StringBuffer res = new StringBuffer();
+        for(int i=0;i<str.length();i++)
+            if(str.charAt(i)>='A' && str.charAt(i)<='Z')
+                res.append((char)(str.charAt(i) + ('a' - 'A')));
+            else
+                res.append(str.charAt(i));
+        return res.toString();
+    }
 
     /**
      * Убрать повторяющиеся подряд символы в строке
@@ -76,8 +148,25 @@ public class Algorithms {
      * например, "мМммооЛллокКОоо" -> "моЛокО",
     */
     public static String removeDublicates(String str) {
-
-        return new String();
+        StringBuilder sb = new StringBuilder(str);
+        char[] chars = str.toCharArray();
+        for (int i = 0; i < chars.length - 1; i++) {
+            char c = chars[i];
+            System.out.println(sb);
+            StringBuilder s1 = new StringBuilder(toLowerCase(String.valueOf(c)));
+            StringBuilder s2 = new StringBuilder(toLowerCase(String.valueOf(chars[i+1])));
+            if (s1.compareTo(s2) == 0) {
+                sb.deleteCharAt(i+1);
+                chars = String.valueOf(sb).toCharArray();
+                i--;
+            }
+        }
+        StringBuilder s1 = new StringBuilder(toLowerCase(String.valueOf(chars[chars.length - 2])));
+        StringBuilder s2 = new StringBuilder(toLowerCase(String.valueOf(chars[chars.length -1])));
+        if (s1.compareTo(s2) == 0) {
+            sb.deleteCharAt(chars.length -1);
+        }
+        return sb.toString();
     }
 
     /**
