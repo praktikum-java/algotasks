@@ -82,14 +82,14 @@ public class AlgorithmsTest {
 
     @Test
     public void removeDublicatesTest() {
+        assertEquals("jUST DO IT!", Algorithms.removeDublicates("jJUuSsTt DO IT!"));
         assertEquals("молоко", Algorithms.removeDublicates("молоко"));
         assertEquals("молоко", Algorithms.removeDublicates("молокооо"));
-        assertEquals("молоко", Algorithms.removeDublicates("мммммолоко"));
+        assertEquals("moloko", Algorithms.removeDublicates("mmmmmoloko"));
         assertEquals("молоко", Algorithms.removeDublicates("мммммолокооо"));
         assertEquals("молоко", Algorithms.removeDublicates("мммммооолллллооооккккооо"));
         assertEquals("мама мыла раму", Algorithms.removeDublicates("мама   мыла   раму"));
         assertEquals("(Кто? мыл? мама.)", Algorithms.removeDublicates("(((Ккто???   мМыл???   мМама...)))"));
-        assertEquals("jUST DO IT!", Algorithms.removeDublicates("jJUuSsTt DO IT!"));
         assertEquals("моЛокО", Algorithms.removeDublicates("мМммооЛллокКОоо"));
         assertEquals(" ", Algorithms.removeDublicates(" "));
         assertEquals("Я", Algorithms.removeDublicates("Я"));
